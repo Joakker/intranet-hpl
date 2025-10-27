@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, onUnmounted, ref, type Ref } from 'vue'
+import { computed, ref, type Ref } from 'vue'
+import { vRevealOnScroll } from '@/utils/fade'
 import TarjetaSistema from '@/components/TarjetaSistema.vue'
 
 type Sistema = {
@@ -28,8 +29,6 @@ const categoria = ref('3')
 
 const filteredSistemas = computed(() => filtrarSistemas(query.value.toLowerCase()))
 
-console.table(sistemas.value)
-
 const filtrarSistemas = (query: string) =>
   sistemas.value.filter(({ id_tipo, nombre, descripcion }) => {
     const k = parseInt(categoria.value)
@@ -41,25 +40,6 @@ const filtrarSistemas = (query: string) =>
         (nombre.toLowerCase().includes(query) || descripcion.toLowerCase().includes(query))
       )
   })
-
-const vRevealOnScroll = {
-  mounted: (el: HTMLElement) => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            el.classList.add('revealed')
-            observer.unobserve(el)
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-    observer.observe(el)
-
-    onUnmounted(() => observer.disconnect())
-  },
-}
 </script>
 
 <template>
@@ -81,7 +61,7 @@ const vRevealOnScroll = {
       <select
         id="countries"
         v-model="categoria"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 width-1/2"
+        class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         v-reveal-on-scroll
       >
         <option value="3" selected>Todos</option>

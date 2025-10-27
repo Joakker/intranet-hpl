@@ -1,41 +1,23 @@
 <script lang="ts" setup>
-import { onUnmounted } from 'vue'
+import { vRevealOnScroll } from '@/utils/fade'
 
 export type Documento = {
   nombre: string
-  url?: string
+  id_documento?: number
+  id_categoria?: number
+  ruta?: string
 }
 
 const props = defineProps<{
   nombre: string
   documentos: Documento[]
 }>()
-
-const vRevealOnScroll = {
-  mounted: (el: HTMLElement) => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            el.classList.add('revealed')
-            console.log(el.classList)
-            observer.unobserve(el)
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-    observer.observe(el)
-
-    onUnmounted(() => observer.disconnect())
-  },
-}
 </script>
 
 <template>
   <div
-    v-reveal-on-scroll
     class="documento-sda popup-hover w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8"
+    v-reveal-on-scroll
   >
     <div class="flex items-center justify-between mb-4">
       <h5 class="text-xl font-bold leading-none text-gray-900">{{ props.nombre }}</h5>
@@ -48,9 +30,9 @@ const vRevealOnScroll = {
           v-bind:key="documento.nombre"
         >
           <a
-            v-if="documento.url"
+            v-if="documento.ruta"
             class="popup-hover group rounded-lg flex items-center"
-            :href="documento.url"
+            :href="documento.ruta"
             target="_blank"
           >
             <span class="font-medium flex-1 ms-3 text-gray-900 hover:text-blue-500"

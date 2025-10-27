@@ -17,5 +17,14 @@ app.get('/api/sistemas', (_, res) => {
   )
 });
 
+for (let i = 1; i <= 18; i++) {
+  app.get(`/api/docs/${i}`, (_, res) => {
+    database.query(
+      `SELECT * FROM documento WHERE id_categoria = ${i};`,
+      (err, data) => res.json(err ? err : data)
+    )
+  })
+}
+
 
 app.listen(5174, () => { });

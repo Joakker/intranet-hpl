@@ -1,3 +1,39 @@
 @import 'tailwindcss';
 @import 'flowbite/src/themes/default';
+@plugin 'flowbite/plugin';
 @source '../node_modules/flowbite';
+
+/**
+ * Edita éstas variables para cambiar el tema
+ */
+@theme {
+  /* Barra superior   */
+  --color-sup: #111827;
+  /* Barra lateral    */
+  --color-lat: #1F2937;
+  /* Color secundario */
+  --color-sec: #E5E7EB;
+
+  /* Color del texto de las barras */
+  --color-tbarra: white;
+  /* Color de los links */
+  --color-tlink: lightblue;
+  /* Color de hover en los menús dropdown */
+  --color-hmenu: #111827;
+
+  /* Color de los anchors de la barra lateral cuando hace hover */
+  --color-lathanchor: white;
+
+  /* Color del borde de las tarjetas */
+  --color-tarjetaborde: #374151;
+  /* Color del texto de las tarjetas */
+  --color-tarjetatexto: #111827;
+  /* Color del fondo de la descripción de la tarjeta */
+  --color-tarjetahdesc: #1F2937;
+  /* Color del texto de la descripción */
+  --color-tarjetadesc: white;
+  /* Color de la tarjeta en sí */
+  --color-tarjetaback: white;
+  /* Color de la tarjeta en sí cuando se hace hover*/
+  --color-tarjetahback: lightblue;
+}

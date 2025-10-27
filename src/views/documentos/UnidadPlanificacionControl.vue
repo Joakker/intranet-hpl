@@ -4,7 +4,7 @@ import DocumentoSda, { type Documento } from '@/components/DocumentoSda.vue'
 const devengo: Documento[] = [
   {
     nombre: 'Transformacion Devengo',
-    url: 'http://10.4.49.60:8080/transformacion_archivos/devengo/inicio.php',
+    ruta: 'http://10.4.49.60:8080/transformacion_archivos/devengo/inicio.php',
   },
 ]
 

@@ -1,24 +1,5 @@
 <script lang="ts" setup>
-import { onUnmounted } from 'vue'
-
-const vRevealOnScroll = {
-  mounted: (el: HTMLElement) => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            el.classList.add('revealed')
-            observer.unobserve(el)
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-    observer.observe(el)
-
-    onUnmounted(() => observer.disconnect())
-  },
-}
+import { vRevealOnScroll } from '@/utils/fade'
 </script>
 
 <template>

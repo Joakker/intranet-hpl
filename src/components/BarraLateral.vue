@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { initFlowbite, Modal } from 'flowbite'
+import { vRevealOnScroll } from '@/utils/fade'
 import ModalInformaciones from './ModalInformaciones.vue'
 
 onMounted(() => {
@@ -36,25 +37,6 @@ try {
 const lavadoManos = ref<Modal | null>(null)
 
 const showModalManos = () => lavadoManos.value?.show()
-
-const vRevealOnScroll = {
-  mounted: (el: HTMLElement) => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            el.classList.add('revealed')
-            observer.unobserve(el)
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-    observer.observe(el)
-
-    onUnmounted(() => observer.disconnect())
-  },
-}
 </script>
 
 <template>
@@ -64,7 +46,7 @@ const vRevealOnScroll = {
     data-drawer-toggle="default-sidebar"
     aria-controls="default-sidebar"
     type="button"
-    class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+    class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-tbarra rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
   >
     <span class="sr-only">Open sidebar</span>
     <svg
@@ -88,16 +70,16 @@ const vRevealOnScroll = {
     aria-label="Sidebar"
     v-reveal-on-scroll
   >
-    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-800">
+    <div class="h-full px-3 py-4 overflow-y-auto bg-lat">
       <ul class="space-y-2 font-medium">
         <li>
           <a
             href="#"
-            class="flex items-center p-2 rounded-lg text-white hover:bg-gray-100 dark:hover:bg-gray-700 group popup-hover"
+            class="flex items-center p-2 rounded-lg text-tbarra group popup-hover"
             data-modal-target="modal-informaciones"
             data-modal-toggle="modal-informaciones"
           >
-            <img class="w-6 h-6" src="/src/images/sidebar/informaciones.png" />
+            <img class="w-6 h-6" src="/sidebar/informaciones.png" />
             <span class="ms-3">Informaciones</span>
           </a>
         </li>
@@ -105,9 +87,9 @@ const vRevealOnScroll = {
           <a
             href="#"
             @click="showModalManos"
-            class="flex items-center p-2 rounded-lg text-white hover:bg-gray-100 dark:hover:bg-gray-700 group popup-hover"
+            class="flex items-center p-2 rounded-lg text-tbarra group popup-hover"
           >
-            <img class="w-6 h-6" src="/src/images/sidebar/lavado_de_manos.png" />
+            <img class="w-6 h-6" src="/sidebar/lavado_de_manos.png" />
             <span class="flex-1 ms-3 whitespace-nowrap">Lavado de Manos</span>
           </a>
         </li>
@@ -115,9 +97,9 @@ const vRevealOnScroll = {
           <a
             href="http://10.4.49.60:8080/gestionTic/login.php"
             target="_blank"
-            class="flex items-center p-2 rounded-lg text-white hover:bg-gray-100 dark:hover:bg-gray-700 group popup-hover"
+            class="flex items-center p-2 rounded-lg text-tbarra group popup-hover"
           >
-            <img class="w-6 h-6" src="/src/images/sidebar/incidencias_tic.png" />
+            <img class="w-6 h-6" src="/sidebar/incidencias_tic.png" />
             <span class="flex-1 ms-3 whitespace-nowrap">Incidencias TIC</span>
           </a>
         </li>
@@ -125,9 +107,9 @@ const vRevealOnScroll = {
           <a
             href="http://10.4.49.60:8080/PlataformaIncidencias/login.php"
             target="_blank"
-            class="flex items-center p-2 rounded-lg text-white hover:bg-gray-100 dark:hover:bg-gray-700 group popup-hover"
+            class="flex items-center p-2 rounded-lg text-tbarra group popup-hover"
           >
-            <img class="w-6 h-6" src="/src/images/sidebar/recursos_fisicos.png" />
+            <img class="w-6 h-6" src="/sidebar/recursos_fisicos.png" />
             <span class="flex-1 ms-3 whitespace-nowrap">Recursos Físicos</span>
           </a>
         </li>
@@ -135,17 +117,17 @@ const vRevealOnScroll = {
           <a
             href="http://172.30.30.2/portal_salud_funcionaria/web/"
             target="_blank"
-            class="flex items-center p-2 rounded-lg text-white hover:bg-gray-100 dark:hover:bg-gray-700 group popup-hover"
+            class="flex items-center p-2 rounded-lg text-tbarra group popup-hover"
           >
-            <img class="w-6 h-6" src="/src/images/sidebar/salud_funcionaria.png" />
+            <img class="w-6 h-6" src="/sidebar/salud_funcionaria.png" />
             <span class="flex-1 ms-3 whitespace-nowrap">Salud Funcionaria</span>
           </a>
         </li>
         <li>
           <a
-            class="flex items-center p-2 rounded-lg text-white hover:bg-gray-100 dark:hover:bg-gray-700 group popup-hover"
+            class="flex items-center p-2 rounded-lg text-tbarra hover:bg-gray-100 group popup-hover"
           >
-            <img class="w-6 h-6" src="/src/images/sidebar/ip.png" />
+            <img class="w-6 h-6" src="/sidebar/ip.png" />
             <span class="flex-1 ms-3 whitespace-nowrap">{{ direccion_ip }}</span>
           </a>
         </li>
@@ -207,7 +189,7 @@ a.popup-hover {
 
 a.popup-hover:hover {
   transform: translateX(10px);
-  background-color: white;
+  background-color: var(--color-lathanchor);
   color: #111827;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

@@ -1,77 +1,28 @@
 <script setup lang="ts">
 import DocumentoSda, { type Documento } from '@/components/DocumentoSda.vue'
 
-const formatoPresentaciones: Documento[] = [
-  {
-    nombre: 'Formato 1',
-    url: 'http://10.4.49.116/sist/documentos/Presentacion-gobCL%20hpl.pptx',
-  },
-  {
-    nombre: 'Formato 2',
-    url: 'http://10.4.49.116/sist/documentos/GobCL-PPT.pptx',
-  },
-]
+const response1 = await fetch('/api/docs/1')
+const formatoPresentaciones: Documento[] = await response1.json()
 
-const abastecimientoLogistica: Documento[] = [
-  {
-    nombre: 'Cumplimiento prestación de servicios.',
-    url: 'http://10.4.49.116/sist/documentos/sda_cr_abastecimiento/certificacion_cumplimiento_de_prestacion_de_servicios.docx',
-  },
-  {
-    nombre: 'Formarto recepción de productos.',
-    url: 'http://10.4.49.116/sist/documentos/sda_cr_abastecimiento/formato_recepcion_de_productos2021.pdf',
-  },
-  {
-    nombre: 'Formato solicitud de uso con cargo a convenio.',
-    url: 'http://10.4.49.116/sist/documentos/sda_cr_abastecimiento/formato_solicitud_uso_convenios2021.pdf',
-  },
-  {
-    nombre: 'Formato requerimientos técnicos.',
-    url: 'http://10.4.49.116/sist/documentos/sda_cr_abastecimiento/pauta%20requisitos%20m%C3%ADnimos%202024.docx',
-  },
-  {
-    nombre: 'Manual procedimiento de compras.',
-    url: 'http://10.4.49.116/sist/documentos/sda_cr_gestion_financiera/Manual_de_Procedimientos_de_compra.pdf',
-  },
-  {
-    nombre: 'Manual Organizacional Abastecimiento.',
-    url: 'http://10.4.49.116/sist/documentos/sda_cr_gestion_financiera/Manual_Organizacional_Abastecimiento.pdf',
-  },
-  {
-    nombre: 'Formulario para informar incumplimientos (Multa) de proveedores',
-    url: 'http://10.4.49.116/sist/documentos/sda_cr_abastecimiento/FORMULARIO%20PARA%20INFORMAR%20INCUMPLIMIENTOS%20(MULTA)%20DE%20PROVEEDORES.pdf',
-  },
-]
+const response2 = await fetch('/api/docs/2')
+const abastecimientoLogistica: Documento[] = await response2.json()
 
-const areaGestionFinanciera: Documento[] = [
-  {
-    nombre: 'Protocolo Cesión de Facturas',
-    url: 'http://10.4.49.116/sist/documentos/sda_cr_gestion_financiera/protocolo_cesion_de_facturas.pdf',
-  },
-  {
-    nombre: 'Protocolo Inventario',
-    url: 'http://10.4.49.116/sist/documentos/sda_cr_gestion_financiera/protocolo_inventario.pdf',
-  },
-]
+const response3 = await fetch('/api/docs/3')
+const areaGestionFinanciera: Documento[] = await response3.json()
 
-const areaTIC: Documento[] = [
-  {
-    nombre: 'Formulario toma de requerimientos para desarrollo de sistemas internos',
-    url: 'http://10.4.49.116/sist/documentos/Area%20Tic/Formulario%20Toma%20de%20Requerimientos.pdf',
-  },
-  {
-    nombre: 'Nomina actualizada de telefonos de HPL',
-    url: 'http://localhost:8080/Anexos.php',
-  },
-  {
+const response4 = await fetch('/api/docs/4')
+const areaTIC: Documento[] = await response4.json()
+
+/*
+ {
     nombre: 'Nomina actualizada de telefonos de Hospital Higueras',
-    url: 'http://10.6.70.133/ges_hospital2014/Principal.php',
+    ruta: 'http://10.6.70.133/ges_hospital2014/Principal.php',
   },
   {
     nombre: 'Nomina actualizada de telefonos de Hospital de Tome',
-    url: 'http://10.4.49.116/sist/documentos/sda_cr_apoyo_logistico/anexos_ht.pdf',
+    ruta: 'http://10.4.49.116/sist/documentos/sda_cr_apoyo_logistico/anexos_ht.pdf',
   },
-]
+  */
 </script>
 
 <template>

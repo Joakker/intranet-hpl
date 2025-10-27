@@ -1,26 +1,7 @@
 <script lang="ts" setup>
-import { onUnmounted } from 'vue'
+import { vRevealOnScroll } from '@/utils/fade'
 
 const props = defineProps(['id', 'nombre', 'descripcion', 'url', 'icono'])
-
-const vRevealOnScroll = {
-  mounted: (el: HTMLElement) => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            el.classList.add('revealed')
-            observer.unobserve(el)
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-    observer.observe(el)
-
-    onUnmounted(() => observer.disconnect())
-  },
-}
 </script>
 
 <template>
@@ -28,11 +9,11 @@ const vRevealOnScroll = {
     <div
       :id="`card-` + props.id"
       :data-tooltip-target="'tooltip-card' + props.id"
-      class="max-w-sm h-full p-6 bg-white border rounded-lg shadow-sm bg-gray-800 border-gray-700 popup-hover"
+      class="max-w-sm h-full p-6 bg-tarjetaback border rounded-lg shadow-sm border-tarjetaborde popup-hover"
     >
       <a :href="props.url" target="_blank" class="w-full h-full">
-        <img class="mx-auto" :src="'/src/images' + props.icono" :alt="props.icono" width="50" />
-        <h5 class="mb-2 text-center text-2xl font-bold tracking-tight text-gray-900">
+        <img class="mx-auto" :src="props.icono" :alt="props.icono" width="50" />
+        <h5 class="mb-2 text-center text-2xl font-bold tracking-tight text-tarjetatexto">
           {{ props.nombre }}
         </h5>
       </a>
@@ -40,7 +21,7 @@ const vRevealOnScroll = {
     <div
       :id="'tooltip-card' + props.id"
       role="tooltip"
-      class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-800 rounded-lg opacity-0 tooltip"
+      class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-tarjetadesc transition-opacity duration-300 bg-tarjetahdesc rounded-lg opacity-0 tooltip"
     >
       {{ props.descripcion }}
     </div>
@@ -56,7 +37,7 @@ div.popup-hover {
 
 div.popup-hover:hover {
   transform: scale(1.05);
-  background-color: lightblue;
+  background-color: var(--color-tarjetahback);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
