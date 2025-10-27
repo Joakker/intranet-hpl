@@ -16,6 +16,9 @@ const props = defineProps(['id', 'nombre', 'descripcion', 'url', 'icono'])
         <h5 class="mb-2 text-center text-2xl font-bold tracking-tight text-tarjetatexto">
           {{ props.nombre }}
         </h5>
+        <h6 class="mb-2 text-center text-xl font-bolt tracking-tight text-tarjetatexto">
+          {{ props.id }}
+        </h6>
       </a>
     </div>
     <div

@@ -30,14 +30,20 @@ const categoria = ref('3')
 const filteredSistemas = computed(() => filtrarSistemas(query.value.toLowerCase()))
 
 const filtrarSistemas = (query: string) =>
-  sistemas.value.filter(({ id_tipo, nombre, descripcion }) => {
+  sistemas.value.filter(({ id_tipo, nombre, descripcion, id_sistema }) => {
     const k = parseInt(categoria.value)
     if (k === 3)
-      return nombre.toLowerCase().includes(query) || descripcion.toLowerCase().includes(query)
+      return (
+        nombre.toLowerCase().includes(query) ||
+        descripcion.toLowerCase().includes(query) ||
+        id_sistema.toString().toLowerCase().includes(query)
+      )
     else
       return (
         k === id_tipo &&
-        (nombre.toLowerCase().includes(query) || descripcion.toLowerCase().includes(query))
+        (nombre.toLowerCase().includes(query) ||
+          descripcion.toLowerCase().includes(query) ||
+          id_sistema.toString().toLowerCase().includes(query))
       )
   })
 </script>

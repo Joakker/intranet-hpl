@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const getImagen = (i: number) => new URL(`../images/info/${i}.png`, import.meta.url).href
+const getImagen = (i: number) => `/info/${i}.png`
 </script>
 
 <template>
