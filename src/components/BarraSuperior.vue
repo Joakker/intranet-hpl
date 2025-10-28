@@ -21,9 +21,6 @@ const documentos = [
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="/logo.png" class="h-8" alt="Logo" />
-        <span class="self-center text-xl font-semibold whitespace-nowrap text-white"
-          >Hospital de Penco-Lirquén</span
-        >
       </a>
       <button
         data-collapse-toggle="navbar-default"

@@ -66,7 +66,7 @@ const showModalManos = () => lavadoManos.value?.show()
 
   <aside
     id="default-sidebar"
-    class="barra-lateral fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+    class="barra-lateral fixed top-0 left-0 z-99999 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
     aria-label="Sidebar"
     v-reveal-on-scroll
   >

@@ -1,14 +1,20 @@
 <script lang="ts" setup>
 import { vRevealOnScroll } from '@/utils/fade'
 
-const props = defineProps(['id', 'nombre', 'descripcion', 'url', 'icono'])
+const props = defineProps<{
+  id: number
+  nombre: string
+  descripcion: string
+  url: string
+  icono: string
+}>()
 </script>
 
 <template>
   <div class="relative tarjeta-sistema" v-reveal-on-scroll>
     <div
-      :id="`card-` + props.id"
-      :data-tooltip-target="'tooltip-card' + props.id"
+      :id="`card-${props.id}`"
+      :data-tooltip-target="`tooltip-card-${props.id}`"
       class="max-w-sm h-full p-6 bg-tarjetaback border rounded-lg shadow-sm border-tarjetaborde popup-hover"
     >
       <a :href="props.url" target="_blank" class="w-full h-full">
@@ -22,11 +28,12 @@ const props = defineProps(['id', 'nombre', 'descripcion', 'url', 'icono'])
       </a>
     </div>
     <div
-      :id="'tooltip-card' + props.id"
+      :id="`tooltip-card-${props.id}`"
       role="tooltip"
       class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-tarjetadesc transition-opacity duration-300 bg-tarjetahdesc rounded-lg opacity-0 tooltip"
     >
       {{ props.descripcion }}
+      <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
   </div>
 </template>

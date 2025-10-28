@@ -4,7 +4,7 @@ import { vRevealOnScroll } from '@/utils/fade'
 import TarjetaSistema from '@/components/TarjetaSistema.vue'
 
 type Sistema = {
-  id_sistema: string
+  id_sistema: number
   nombre: string
   descripcion: string
   icono: string
@@ -79,7 +79,7 @@ const filtrarSistemas = (query: string) =>
       id="sistemas-list"
       name="fade"
       tag="div"
-      class="grid lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-1 gap-4"
+      class="grid lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-1 gap-4 align-center justify-center"
     >
       <TarjetaSistema
         v-for="sistema in filteredSistemas"
