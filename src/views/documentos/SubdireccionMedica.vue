@@ -22,90 +22,23 @@ const reglamentoInterno: Documento[] = await response2.json()
 const response3 = await fetch('/api/docs/7')
 const hospitalAmigo: Documento[] = await response3.json()
 
-const ucEmergencia: Documento[] = [
-  {
-    nombre: 'Informe de accidentes de tránsito colectivos',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm_cr_urgencia/informe_de__accidentes_de_transito_colectivos.pdf',
-  },
-]
+const response4 = await fetch('/api/docs/8')
+const ucEmergencia: Documento[] = await response4.json()
 
-const ucPabellon: Documento[] = [
-  {
-    nombre: 'Tarjeta Administración de Medicamentos',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm_cr_atencion_cerrada/tarjetas_adm_medicamentos.pdf',
-  },
-]
+const response5 = await fetch('/api/docs/9')
+const ucPabellon: Documento[] = await response5.json()
 
-const ucFarmacia: Documento[] = [
-  {
-    nombre: 'Formulario de Antibióticos de Uso Restringido (FAUR)',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm_cr_apoyo_diagnostico/farmacia/faur%20editable%202022.pdf',
-  },
-  {
-    nombre: 'Arsenal Farmacológico 2021',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm_cr_apoyo_diagnostico/farmacia/ARSENAL%20FARMACOLOGICO%20HOSPITAL%20PENCO%20LIRQUEN%20A%C3%91O%202021.pdf',
-  },
-  {
-    nombre: 'Solicitud de Compra de Fármaco de Uso Ocasional',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm_cr_apoyo_diagnostico/farmacia/SOLICITUD%20DE%20COMPRA%20DE%20FARMACO%20DE%20USO%20OCASIONAL.pdf',
-  },
-  {
-    nombre: 'Solicitud de Incorporación Medicamentos a Arsenal Farmacológico',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm_cr_apoyo_diagnostico/farmacia/SOLICITUD%20DE%20INCORPORACION%20MEDICAMENTOS%20A%20ARSENAL%20FARMACOLOGICO.pdf',
-  },
-  {
-    nombre: 'Solicitud de Uso de Fármaco Restringido Por Especialidad',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm_cr_apoyo_diagnostico/farmacia/SOLICITUD%20DE%20USO%20DE%20FARMACO%20RESTRINGIDO%20POR%20ESPECIALIDAD%20.pdf',
-  },
-  {
-    nombre: 'Registro de Canje',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm/REGISTRO%20DE%20CANJE.docx',
-  },
-  {
-    nombre: 'Formulario de Bajas',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm/Formulario%20de%20bajas..docx',
-  },
-]
+const response6 = await fetch('/api/docs/10')
+const ucFarmacia: Documento[] = await response6.json()
 
-const ucGinecoObstetricia: Documento[] = [
-  {
-    nombre: 'Solicitud examen para detección de anticuerpos para VIH',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm/SOLICITUD%20DETECCI%C3%93N%20DE%20ANTICUERPOS%20VIH%202022%20FINAL.pdf',
-  },
-  {
-    nombre: 'Consentimiento VIH Adulto',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm_cr_urgencia/CONSENTIMIENTO%20VIH%20ADULTO.docx',
-  },
-  {
-    nombre: 'Solicitud de examen VDRL RPR',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm/SOLICITUD%20DE%20EXAMEN%20VDRL%20RPR%202022.pdf',
-  },
-]
+const response7 = await fetch('/api/docs/11')
+const ucGinecoObstetricia: Documento[] = await response7.json()
 
-const ucImagenologia: Documento[] = [
-  {
-    nombre: 'Consentimiento Informado TAC CC',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm_cr_apoyo_diagnostico/imagenologia/1-%20CONSENTIMIENTO%20INFORMADO%20TAC%20CC.pdf',
-  },
-  {
-    nombre: 'Encuesta de Seguridad Reacción Adversa al Medio de Contraste',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm/2%20-%20ENCUESTA%20DE%20SEGURIDAD%20JULIO%202024.pdf',
-  },
-  {
-    nombre: 'Solicitud de TAC en Situación de Riesgo Vital',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm_cr_apoyo_diagnostico/imagenologia/3-%20TAC%20EMERGENCIAS%20RIESGO%20VITAL.pdf',
-  },
-  {
-    nombre: 'Consentimiento Informado Examen Radiológico',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm_cr_apoyo_diagnostico/imagenologia/4-%20CONS%20INFORMADO%20PCTS%20EMBARAZADAS.pdf',
-  },
-]
-const ucEsterilizacion: Documento[] = [
-  {
-    nombre: 'Notificación Eventos de Material Esterilizado',
-    ruta: 'http://10.4.49.116/sist/documentos/sdm_cr_apoyo_diagnostico/esterilizacion/notificacion_evento_material_esteril.pdf',
-  },
-]
+const response8 = await fetch('/api/docs/12')
+const ucImagenologia: Documento[] = await response8.json()
+
+const response9 = await fetch('/api/docs/13')
+const ucEsterilizacion: Documento[] = await response9.json()
 </script>
 
 <template>
@@ -119,15 +52,18 @@ const ucEsterilizacion: Documento[] = [
       <DocumentoSda nombre="Formularios Clínicos (Cont.)" :documentos="f3" />
     </div>
     <div class="h-4" />
-    <div class="grid w-full lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4">
+    <div class="grid w-full lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-1 gap-4">
       <DocumentoSda nombre="Reglamento Interno" :documentos="reglamentoInterno" />
       <DocumentoSda nombre="Hospital Amigo" :documentos="hospitalAmigo" />
       <DocumentoSda nombre="UC Emergencia" :documentos="ucEmergencia" />
       <DocumentoSda nombre="UC Pabellón" :documentos="ucPabellon" />
-      <DocumentoSda nombre="UC Farmacia" :documentos="ucFarmacia" />
-      <DocumentoSda nombre="UC Gineco-Obstetricia" :documentos="ucGinecoObstetricia" />
-      <DocumentoSda nombre="UC Imagenología" :documentos="ucImagenologia" />
       <DocumentoSda nombre="UC Esterilización" :documentos="ucEsterilizacion" />
+    </div>
+    <div class="h-4" />
+    <div class="grid w-full lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
+      <DocumentoSda nombre="UC Farmacia" :documentos="ucFarmacia" />
+      <DocumentoSda nombre="UC Imagenología" :documentos="ucImagenologia" />
+      <DocumentoSda nombre="UC Gineco-Obstetricia" :documentos="ucGinecoObstetricia" />
     </div>
   </div>
 </template>
