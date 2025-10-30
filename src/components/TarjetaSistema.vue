@@ -17,11 +17,12 @@ const props = defineProps<{
       :data-tooltip-target="`tooltip-card-${props.id}`"
       class="max-w-sm h-full p-6 bg-tarjetaback border rounded-lg shadow-sm border-tarjetaborde popup-hover"
     >
-      <a :href="props.url" target="_blank" class="w-full h-full">
-        <img class="mx-auto" :src="props.icono" :alt="props.icono" width="50" />
+      <a :href="props.url" target="_blank" class="flex flex-col h-full">
+        <img class="mx-auto" :src="props.icono" :alt="props.icono" height="50" width="50" />
         <h5 class="mb-2 text-center text-2xl font-bold tracking-tight text-tarjetatexto">
           {{ props.nombre }}
         </h5>
+        <div class="flex grow" />
         <h6 class="mb-2 text-center text-xl font-bolt tracking-tight text-tarjetatexto">
           {{ props.id }}
         </h6>

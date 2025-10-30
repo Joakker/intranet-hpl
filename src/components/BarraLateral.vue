@@ -80,7 +80,7 @@ const cumples = ((await response.json()) as { nombre: string }[]).map(({ nombre 
     v-reveal-on-scroll
   >
     <div class="h-full px-3 py-4 overflow-y-auto bg-lat">
-      <ul class="space-y-2 font-medium">
+      <ul class="flex flex-col h-full space-y-2 font-medium">
         <li>
           <a
             href="#"
@@ -146,6 +146,7 @@ const cumples = ((await response.json()) as { nombre: string }[]).map(({ nombre 
             <span class="flex-1 ms-3 text-sm whitespace-nowrap">{{ cumple }}</span>
           </a>
         </li>
+        <li class="flex grow" />
         <li>
           <a
             class="flex items-center p-2 rounded-lg text-tbarra hover:bg-gray-100 group popup-hover"

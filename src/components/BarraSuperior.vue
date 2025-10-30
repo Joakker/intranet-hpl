@@ -17,7 +17,7 @@ const documentos = [
 </script>
 
 <template>
-  <nav class="barra-superior border-sec bg-sup" v-reveal-on-scroll>
+  <nav class="barra-superior fixed start-0 z-20 top-0 border-sec bg-sup" v-reveal-on-scroll>
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="/logo.png" class="h-8" alt="Logo" />
@@ -60,6 +60,7 @@ const documentos = [
                   id="dropdownNavbarLink"
                   class="block py-2 px-3 text-tbarra"
                   data-dropdown-toggle="dropdownNavbar"
+                  data-dropdown-offset-distance="20"
                 >
                   Documentos
                   <svg
@@ -80,7 +81,7 @@ const documentos = [
                 </button>
                 <div
                   id="dropdownNavbar"
-                  class="py-2 hidden font-normal divide-y rounded-lg shadow-sm w-44 bg-gray-700 divide-gray-600"
+                  class="py-2 hidden font-normal divide-y divide-gray rounded-lg shadow-sm w-44 bg-gray-700 divide-gray-600"
                 >
                   <ul class="py-2 text-sm text-tbarra" aria-labelledby="dropdownLargeButton">
                     <li v-for="documento in documentos" v-bind:key="documento.nombre">

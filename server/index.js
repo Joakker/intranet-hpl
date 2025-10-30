@@ -37,9 +37,7 @@ app.get('/api/cumple', (_, res) => {
   funcionariosdb.query(
     `SELECT
       id_funcionario,
-      nombre,
-      DAY(fecha_nacimiento)   as dia,
-      MONTH(fecha_nacimiento) as mes
+      nombre
     FROM
       funcionario
     WHERE
