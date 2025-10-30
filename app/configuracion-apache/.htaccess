@@ -1,0 +1,18 @@
+RewriteEngine On
+
+# Permitir que Apache ejecute PHP
+<FilesMatch "\.php$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+
+# Si es /api, apunta a php/index.php
+RewriteCond %{REQUEST_URI} ^/api
+RewriteRule ^.*$ php/index.php [L,QSA]
+
+# Si es un archivo o directorio existente, servirlo
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Todo lo demás → SPA
+RewriteRule ^.*$ index.html [L]

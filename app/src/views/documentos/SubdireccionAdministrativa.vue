@@ -1,16 +1,48 @@
 <script setup lang="ts">
 import DocumentoSda, { type Documento } from '@/components/DocumentoSda.vue'
 
-const response1 = await fetch('/api/docs/1')
+const response1 = await fetch('/api/docs', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "id": 1
+  })
+})
 const formatoPresentaciones: Documento[] = await response1.json()
 
-const response2 = await fetch('/api/docs/2')
+const response2 = await fetch('/api/docs', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "id": 2
+  })
+})
 const abastecimientoLogistica: Documento[] = await response2.json()
 
-const response3 = await fetch('/api/docs/3')
+const response3 = await fetch('/api/docs', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "id": 3
+  })
+})
 const areaGestionFinanciera: Documento[] = await response3.json()
 
-const response4 = await fetch('/api/docs/4')
+const response4 = await fetch('/api/docs', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "id": 4
+  })
+})
 const areaTIC: Documento[] = await response4.json()
 
 /*

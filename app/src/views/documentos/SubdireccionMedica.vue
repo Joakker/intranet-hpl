@@ -12,32 +12,104 @@ const divide = <T,>(array: T[]): [T[], T[], T[]] => {
   return [a1, a2, a3]
 }
 
-const response1 = await fetch('/api/docs/5')
+const response1 = await fetch('/api/docs', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    "id": 5
+  })
+})
 const formulariosClinicos: Documento[] = await response1.json()
 const [f1, f2, f3] = divide(formulariosClinicos)
 
-const response2 = await fetch('/api/docs/6')
+const response2 = await fetch('/api/docs', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    "id": 6
+  })
+})
 const reglamentoInterno: Documento[] = await response2.json()
 
-const response3 = await fetch('/api/docs/7')
+const response3 = await fetch('/api/docs', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    "id": 7
+  })
+})
 const hospitalAmigo: Documento[] = await response3.json()
 
-const response4 = await fetch('/api/docs/8')
+const response4 = await fetch('/api/docs', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    "id": 8
+  })
+})
 const ucEmergencia: Documento[] = await response4.json()
 
-const response5 = await fetch('/api/docs/9')
+const response5 = await fetch('/api/docs', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    "id": 9
+  })
+})
 const ucPabellon: Documento[] = await response5.json()
 
-const response6 = await fetch('/api/docs/10')
+const response6 = await fetch('/api/docs/', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    "id": 10
+  })
+})
 const ucFarmacia: Documento[] = await response6.json()
 
-const response7 = await fetch('/api/docs/11')
+const response7 = await fetch('/api/docs/', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    "id": 11
+  })
+})
 const ucGinecoObstetricia: Documento[] = await response7.json()
 
-const response8 = await fetch('/api/docs/12')
+const response8 = await fetch('/api/docs/', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    "id": 12
+  })
+})
 const ucImagenologia: Documento[] = await response8.json()
 
-const response9 = await fetch('/api/docs/13')
+const response9 = await fetch('/api/docs/', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    "id": 13
+  })
+})
 const ucEsterilizacion: Documento[] = await response9.json()
 </script>
 

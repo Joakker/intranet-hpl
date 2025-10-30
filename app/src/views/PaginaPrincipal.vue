@@ -15,9 +15,9 @@ type Sistema = {
 let data: Sistema[]
 
 try {
-  const response = await fetch('/api/sistemas')
+  const response = await fetch('/api/sistema')
   const k = await response.json()
-  data = Array.isArray(k) ? k : []
+  data = Array.isArray(k) ? k.map(item => ({ ...item, id_sistema: Number(item.id_sistema) })) : []
 } catch (e: unknown) {
   console.error(e)
   data = []

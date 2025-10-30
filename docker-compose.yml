@@ -1,0 +1,71 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: intranet-mariadb
+    restart: unless-stopped
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: intranet
+      MYSQL_USER: systemuser
+      MYSQL_PASSWORD: systempass
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: intranet-phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - mariadb
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+    ports:
+      - 8081:80
+    networks:
+      - app-network
+
+  apache-php:
+    build: 
+      context: .
+      dockerfile: dockerfile.php
+    container_name: intranet-apache-php
+    restart: unless-stopped
+    depends_on:
+      - mariadb
+    ports:
+      - 81:80
+    volumes:
+      - ./app/dist:/var/www/html:ro
+      - ./php.ini:/usr/local/etc/php/php.ini:ro
+      - ./apache.conf:/etc/apache2/conf-enabled/override.conf:ro
+    networks:
+      - app-network
+    command: bash -c "docker-php-ext-install mysqli pdo pdo_mysql && apache2-foreground"
+
+  node:
+    image: node:alpine
+    container_name: intranet-node
+    restart: unless-stopped
+    working_dir: /app
+    ports:
+      - 3002:3000
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - CHOKIDAR_INTERVAL=300
+    volumes:
+      - ./app:/app
+    networks:
+      - app-network
+    command: tail -f /dev/null
+
+volumes:
+  mariadb_data:
+
+networks:
+  app-network:
+    driver: bridge

@@ -12,21 +12,61 @@ const divide3 = <T,>(array: T[]): [T[], T[], T[]] => {
   return [a1, a2, a3]
 }
 
-const response1 = await fetch('/api/docs/14')
+const response1 = await fetch('/api/docs', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "id": 14
+  })
+})
 const adminPersonas: Documento[] = await response1.json()
 const [f1, f2, f3] = divide3(adminPersonas)
 
-const response2 = await fetch('/api/docs/15')
+const response2 = await fetch('/api/docs', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "id": 15
+  })
+})
 const saludOcupacional: Documento[] = await response2.json()
 const [s1, s2, s3] = divide3(saludOcupacional)
 
-const response3 = await fetch('/api/docs/16')
+const response3 = await fetch('/api/docs', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "id": 16
+  })
+})
 const bienestar: Documento[] = await response3.json()
 
-const response4 = await fetch('/api/docs/17')
+const response4 = await fetch('/api/docs', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "id": 17
+  })
+})
 const capacitacion: Documento[] = await response4.json()
 
-const response5 = await fetch('/api/docs/18')
+const response5 = await fetch('/api/docs', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "id": 18
+  })
+})
 const activacionCargo: Documento[] = await response5.json()
 </script>
 

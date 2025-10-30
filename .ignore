@@ -1,5 +1,0 @@
-# Helix editor ignora los siguientes archivos, además de los de
-# .gitignore, pero éstos tienen que estar en git
-node_modules
-*.jpg
-*.png

@@ -1,0 +1,15 @@
+FROM richarvey/nginx-php-fpm:latest
+
+# Instalar Node.js
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs
+
+# Crear directorio de trabajo
+WORKDIR /app
+
+# Verificar instalaciones
+RUN echo "=== Node.js ===" && node --version && npm --version && \
+    echo "=== PHP ===" && php --version && \
+    echo "=== Composer ===" && composer --version
+
+CMD ["/bin/bash"]
