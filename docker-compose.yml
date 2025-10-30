@@ -1,0 +1,49 @@
+services:
+  apache-php:
+    build: .
+    container_name: apache-php
+    restart: always
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "80:80"
+    networks:
+      - mynetwork
+    depends_on:
+      - mariadb
+    environment:
+      - TZ=America/Santiago
+  mariadb:
+    image: mariadb:10.4.11
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      TZ: America/Santiago
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - mynetwork
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.2
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mariadb
+      PMA_USER: root
+      PMA_PASSWORD: rootpass
+      UPLOAD_LIMIT: 64M
+    ports:
+      - "8081:80"
+    depends_on:
+      - mariadb
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  db_data:
