@@ -15,7 +15,6 @@ function getBanner(){
         $rutas[] = $row;
     }
 
-    /*return json_encode($rutas);*/
     echo respuesta($rutas);
 }
 
