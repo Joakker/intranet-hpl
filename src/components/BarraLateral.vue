@@ -37,6 +37,15 @@ try {
 const lavadoManos = ref<Modal | null>(null)
 
 const showModalManos = () => lavadoManos.value?.show()
+
+const response = await fetch('/api/cumple')
+const cumples = ((await response.json()) as { nombre: string }[]).map(({ nombre }) => {
+  const palabras = nombre
+    .toLocaleLowerCase()
+    .replace(/\b\w/g, (c) => c.toUpperCase())
+    .split(' ')
+  return `${palabras[2]} ${palabras[0]}`
+})
 </script>
 
 <template>
@@ -125,6 +134,20 @@ const showModalManos = () => lavadoManos.value?.show()
         </li>
         <li>
           <a
+            class="flex flex-column items-center p-2 rounded-lg text-tbarra hover:bg-gray-100 group popup-hover"
+          >
+            <img class="w-6 h-6" src="/sidebar/cumple.png" />
+            <span class="flex-1 ms-3 whitespace-nowrap">Cumpleaños de hoy</span>
+          </a>
+          <a
+            v-for="cumple in cumples"
+            class="flex flex-column items-center p-2 rounded-lg text-tbarra hover:bg-gray-100 group popup-hover"
+          >
+            <span class="flex-1 ms-3 text-sm whitespace-nowrap">{{ cumple }}</span>
+          </a>
+        </li>
+        <li>
+          <a
             class="flex items-center p-2 rounded-lg text-tbarra hover:bg-gray-100 group popup-hover"
           >
             <img class="w-6 h-6" src="/sidebar/ip.png" />
@@ -180,14 +203,16 @@ const showModalManos = () => lavadoManos.value?.show()
 </template>
 
 <style scoped>
-a.popup-hover {
+a.popup-hover,
+div.popup-hover {
   transition:
     transform 0.3s ease-in-out,
     background-color 0.3s ease-in-out,
     color 0.3s ease-in-out;
 }
 
-a.popup-hover:hover {
+a.popup-hover:hover,
+div.popup-hover:hover {
   transform: translateX(10px);
   background-color: var(--color-lathanchor);
   color: #111827;
